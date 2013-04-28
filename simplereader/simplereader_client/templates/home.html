@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app>
+<head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src='/static/simplereader_client/js/feeds.js'></script>
+<script src='/static/simplereader_client/js/uiListeners.js'></script>
+<script src='/static/simplereader_client/js/angular/feed.js'></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<script>
+        var m = angular.module('angSimpleReader', []);
+        m.config(function($interpolateProvider) { $interpolateProvider.startSymbol('(('); $interpolateProvider.endSymbol('))'); });
+        google.load("feeds", "1");
+        $(window).load(initJQueryListeners);
+</script>
+</head>
+<body>
+<div ng-controller="FeedController">
+    <button class="btn" id="feedButton">Retrieve feed</button>
+    <div id="feed"></div>
+
+    <form class="form-horizontal">
+        <input type="text" ng-model="formAddFeedText" ng-model-instant>
+        <button class="btn" ng-click=addNewFeed()><i class="icon-plus"></i>Add</button>
+    </form>
+</div>
+</body>
+</html>
