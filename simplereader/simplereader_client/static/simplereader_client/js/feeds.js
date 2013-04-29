@@ -1,4 +1,3 @@
-
 var currentfeedUrl;
 function retrieveFeed(_feedUrl)
 {
