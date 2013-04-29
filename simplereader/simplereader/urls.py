@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'simplereader_client.views.home', name='home'),
+     url(r'^auth/', 'simplereader_client.views.auth', name='auth'),
     # url(r'^simplereader/', include('simplereader.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
