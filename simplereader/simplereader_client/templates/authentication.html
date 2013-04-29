@@ -2,10 +2,11 @@
 <html ng-app>
 <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src='/static/simplereader_client/js/angular/feed.js'></script>
+    <script src='/static/simplereader_client/js/angular/authentication.js'></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href='/static/simplereader_client/css/base.css'>
 <script>
         var m = angular.module('angSimpleReader', []);
         m.config(function($interpolateProvider) { $interpolateProvider.startSymbol('(('); $interpolateProvider.endSymbol('))'); });
@@ -13,27 +14,41 @@
 </head>
 <body>
 <div ng-controller="AuthenticationController">
-    <form class="form-horizontal">
-        <div class="control-group">
-            <label class="control-label" for="inputEmail">Email</label>
-            <div class="controls">
-                <input type="text" id="inputEmail" placeholder="Email"
-                       ng-model="formEmailUser" ng-model-instant>
+    <div id="authForm" class="container-fluid pagination-centered">
+        <div id="leftAuth">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
+                    <input type="text" id="inputEmail" placeholder="Email"
+                           ng-model="formEmailUser">
+                </div>
             </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="inputPassword">Password</label>
-            <div class="controls">
-                <input type="password" id="inputPassword" placeholder="Password"
-                       ng-model="formEmailPassword" ng-model-instant>
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Password</label>
+                <div class="controls">
+                    <input type="password" id="inputPassword" placeholder="Password"
+                           ng-model="formEmailPassword">
+                </div>
             </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn" ng-click=logIn()>Sign in</button>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn" ng-click=logIn()>Sign in</button>
+                </div>
             </div>
+        </form>
         </div>
-    </form>
+
+        <div id="rightAuth">
+            <p class="info"> If you don't have an account, click on Sign Up </p>
+            <form class="form-horizontal">
+                    <div class='signup-button'>
+                        <button type="submit" class="btn btn-info" ng-click=signUp()>Sign Up</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>
