@@ -40,15 +40,31 @@
         </div>
 
         <div id="rightAuth">
+            <div ng-hide="signupFieldHidden" ng-model="signUpForm">
+            <form name="signUpForm">
+                Email: <input name="emailInput" ng-model="emailUser" required>
+                <span class="error" ng-show="signUpForm.input.$error.required">Required!</span><br><br>
+
+                Password: <input type="password" name="passwordInput" ng-model="passwordUser" required>
+                <span class="error" ng-show="signUpForm.input.$error.required">Required!</span><br>
+
+                Confirm <input type="password" name="confirmPasswordInput" ng-model="confirmedPasswordUser">
+                <span class="error" ng-show="signUpForm.input.$error.required">Required!</span><br>
+
+                <button class="btn" id="registerUserButton">Create your user</button>
+            </form>
+            </div>
+
+
             <h6 class="info"><small>If you don't have an account, click on Sign Up </small></h6>
             <form class="form-horizontal">
                     <div class='signup-button'>
-                        <button type="submit" class="btn btn-info" ng-click=signUp()>Sign Up</button>
+                        <button type="submit" class="btn btn-info" ng-model="signUpButton"
+                                ng-click=signUp() ng-show="signupFieldHidden">Sign Up</button>
                     </div>
             </form>
         </div>
     </div>
-
 </div>
 </body>
 </html>
