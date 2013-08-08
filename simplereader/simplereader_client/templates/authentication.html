@@ -2,19 +2,17 @@
 <html ng-app="angSimpleReader">
 <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src='/static/simplereader_client/js/angular/authentication.js'></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src='/static/simplereader_client/js/angular/authentication.js'></script>
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href='/static/simplereader_client/css/base.css'>
-<script>
-        var m = angular.module('angSimpleReader', []);
-        m.config(function($interpolateProvider) { $interpolateProvider.startSymbol('(('); $interpolateProvider.endSymbol('))'); });
-</script>
 </head>
-<body>
-<div ng-controller="AuthenticationController">
-    <div id="authForm" class="container-fluid pagination-centered">
+<body ng-controller="AuthenticationController">
+<div>
+
+
+     <div id="authForm" class="container-fluid pagination-centered">
         <div id="leftAuth">
         <form class="form-horizontal">
             <div class="control-group">
@@ -43,15 +41,22 @@
             <div ng-hide="signupFieldHidden" ng-model="signUpForm">
             <form name="signUpForm">
                 Email: <input name="emailInput" ng-model="emailUser" required>
-                <span class="error" ng-show="signUpForm.input.$error.required">Required!</span><br><br>
+                <br><br>
 
-                Password: <input type="password" name="passwordInput" ng-model="passwordUser" required>
-                <span class="error" ng-show="signUpForm.input.$error.required">Required!</span><br>
+                Password: <input type="password" name="passwordUser" ng-model="passwordUser" id="passwordUser" required>
+                <br>
 
-                Confirm <input type="password" name="confirmPasswordInput" ng-model="confirmedPasswordUser">
-                <span class="error" ng-show="signUpForm.input.$error.required">Required!</span><br>
+                Confirm <input type="password" name="confirmedPasswordUser" ng-model="confirmedPasswordUser" id="confirmedPasswordUser"
+                               valid-password-c required>
+                <br>
 
-                <button class="btn" id="registerUserButton">Create your user</button>
+                <div class="msg-block" ng-show="signUpForm.$error">
+	                <span class="msg-error" ng-show="signUpForm.confirmedPasswordUser.$error.noMatch">
+		                Passwords don't match.
+	                </span>
+                </div>
+
+                <button class="btn" id="registerUserButton">Create user</button>
             </form>
             </div>
 
