@@ -1,3 +1,6 @@
+simplereader/Simplereader.iml
 simplereader/simplereader/settings.py
 *.pyc*
 .idea/*
+*/*.*iml
+env/*
