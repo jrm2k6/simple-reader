@@ -9,11 +9,11 @@ class Feed(models.Model):
     category = models.CharField(max_length=300)
 
     def __unicode__(self):
-        return self.title + ' ::' + str(self.url)
+        return self.title + ',' + str(self.url)
 
 class ReaderUser(models.Model):
     user = models.OneToOneField(User)
     email = models.EmailField()
 
     def __unicode__(self):
-        return self.user.first_name + ' ::' + str(self.email)
+        return self.user.first_name + ',' + str(self.email)
