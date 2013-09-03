@@ -3,13 +3,14 @@ var app = angular.module('angSimpleReader', []);
 function AuthenticationController($scope) {
     $scope.signupFieldHidden = true;
 
-    $scope.logIn = function()
-    {
+    $scope.logIn = function() {
     };
 
-    $scope.signUp = function()
-    {
+    $scope.signUp = function() {
         $scope.signupFieldHidden = false;
+    };
+
+    $scope.createAccount = function(email, password) {
     };
 }
 
