@@ -4,3 +4,4 @@ simplereader/simplereader/settings.py
 .idea/*
 */*.*iml
 env/*
+*/*.db
