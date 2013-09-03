@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Feed(models.Model):
     title = models.CharField(max_length=300)
     url = models.URLField(max_length=500)
-    date_added = models.DateField(True)
+    date_added = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=300)
 
     def __unicode__(self):
