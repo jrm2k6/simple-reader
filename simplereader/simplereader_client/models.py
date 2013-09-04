@@ -1,3 +1,4 @@
+import hashlib
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -12,8 +13,15 @@ class Feed(models.Model):
         return self.title + ',' + str(self.url)
 
 class ReaderUser(models.Model):
-    user = models.OneToOneField(User)
+    first_name = models.CharField(max_length=300)
+    last_name = models.CharField(max_length=300)
     email = models.EmailField()
-
+    date_joined = models.DateField(auto_now_add=True)
+    password = models.CharField(max_length=300)
+    
+    def save(self):
+        self.password = hashlib.sha1(self.password).hexdigest()
+        super(ReaderUser, self).save()
+ 
     def __unicode__(self):
-        return self.user.first_name + ',' + str(self.email)
+        return self.first_name + ',' + str(self.email)

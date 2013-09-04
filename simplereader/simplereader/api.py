@@ -10,9 +10,7 @@ from tastypie import fields
 
 
 class CreateReaderUserResource(ModelResource):
-    user = fields.OneToOneField('UserResource', 'user', full=False)
-    
-    class Meta:
+     class Meta:
         allowed_methods = ['post']
         always_return_data = True
         authentication = Authentication()
@@ -25,22 +23,7 @@ class ReaderUserResource(ModelResource):
     class Meta:
         queryset = ReaderUser.objects.all()
         allowed_methods = ['get, put, patch']
-        resource_name = 'ruser'
-
-
-class UserResource(ModelResource):
-    raw_password = fields.CharField(attribute=None, readonly=True, null=True,
-                                    blank=True)
- 
-    class Meta:
-        authentication = MultiAuthentication(
-            BasicAuthentication(),
-            ApiKeyAuthentication())
-        authorization = Authorization()
- 
-        allowed_methods = ['get', 'patch', 'put', ]
-        always_return_data = True
-        queryset = User.objects.all().select_related("api_key")
+        resource_name = 'user'
 
 
 class FeedResource(ModelResource):
