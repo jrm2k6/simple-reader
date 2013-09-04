@@ -10,8 +10,6 @@
 </head>
 <body ng-controller="AuthenticationController">
 <div>
-
-
      <div id="authForm" class="container-fluid pagination-centered">
         <div id="leftAuth">
         <form class="form-horizontal">
@@ -58,10 +56,15 @@
 
                 <button class="btn" id="registerUserButton" ng-click="createAccount(emailUser, passwordUser)">Create user</button>
             </form>
+                <div class="alert {%verbatim%} {{classMessage}} {%endverbatim%}" ng-show="creationDone">			
+                    {%verbatim%}
+                        {{userCreatedSuccess}}
+                    {%endverbatim%}
+                </div>
             </div>
 
 
-            <h6 class="info"><small>If you don't have an account, click on Sign Up </small></h6>
+            <h6 class="info" ng-show="signupFieldHidden"><small>If you don't have an account, click on Sign Up </small></h6>
             <form class="form-horizontal">
                     <div class='signup-button'>
                         <button type="submit" class="btn btn-info" ng-model="signUpButton"
