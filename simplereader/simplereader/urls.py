@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'simplereader_client.views.home', name='home'),
      url(r'^auth/', 'simplereader_client.views.auth', name='auth'),
+     url(r'^signup/', 'simplereader_client.views.signup', name='signup'),
      url(r'^api/', include(user_resource.urls)),
      url(r'^api/', include(create_user_resource.urls)),
      url(r'^api/', include(feed_resource.urls)),
