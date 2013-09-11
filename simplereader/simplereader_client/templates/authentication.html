@@ -35,30 +35,17 @@
 
         <div id="rightAuth" class="hero-unit">
             <div ng-hide="signupFieldHidden" ng-model="signUpForm">
-            <form name="signUpForm">
-                Email: <input name="emailInput" ng-model="emailUser" required>
-                <br><br>
-
-                Password: <input type="password" name="passwordUser" ng-model="passwordUser" id="passwordUser" required>
-                <br>
-
-                Confirm <input type="password" name="confirmedPasswordUser" ng-model="confirmedPasswordUser" id="confirmedPasswordUser"
-                               valid-password-c required>
-                <br>
-
-                <div class="msg-block" ng-show="signUpForm.$error">
-	                <span class="msg-error" ng-show="signUpForm.confirmedPasswordUser.$error.noMatch">
-		                Passwords don't match.
-	                </span>
-                </div>
-
-                <button class="btn" id="registerUserButton" ng-click="createAccount(emailUser, passwordUser)">Create user</button>
+            <form method="post" action="/signup/" name="signUpForm">
+            {% csrf_token %}
+            <table>
+                    {% for field in form %}
+                    <tr>
+                        <td>{{ field.label_tag }} </td> <td> {{ field }} </td>   
+                    </tr>
+                    {% endfor %}
             </form>
-                <div class="alert {%verbatim%} {{classMessage}} {%endverbatim%}" ng-show="creationDone">			
-                    {%verbatim%}
-                        {{userCreatedSuccess}}
-                    {%endverbatim%}
-                </div>
+            </table>
+                <button class="btn" type="submit">Create User</button>
             </div>
 
 
