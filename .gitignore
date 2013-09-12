@@ -5,3 +5,4 @@ simplereader/simplereader/settings.py
 */*.*iml
 env/*
 */*.db
+simplereader/simplereader.db
