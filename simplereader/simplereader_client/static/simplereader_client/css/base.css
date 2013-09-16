@@ -1,0 +1,12 @@
+.sidebar {
+	border: solid 1px black;
+}
+
+.content {
+	border: solid 1px black
+}
+
+.options-items li{
+	margin-left: 10px;
+}
+

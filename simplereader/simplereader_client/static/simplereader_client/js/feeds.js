@@ -1,12 +1,10 @@
 var currentfeedUrl;
-function retrieveFeed(_feedUrl)
-{
+function retrieveFeed(_feedUrl) {
   currentfeedUrl = _feedUrl;
   loadFeed();
 }
 
-function loadFeed()
-{
+function loadFeed() {
     var feed = new google.feeds.Feed(currentfeedUrl);
     feed.setNumEntries(100);
     feed.includeHistoricalEntries();

@@ -2,6 +2,7 @@
 {% block include_js %}
     <script src='/static/simplereader_client/js/feeds.js'></script>
     <script src='/static/simplereader_client/js/uiListeners.js'></script>
+    <script src='/static/simplereader_client/js/angular/directives.js'></script>
     <script src='/static/simplereader_client/js/angular/feed.js'></script>
 <script>
         google.load("feeds", "1");
@@ -9,15 +10,19 @@
 </script>
 {% endblock %}
 {% block body %}
-<body>
 <div ng-controller="FeedController">
-    <button class="btn" id="feedButton">Retrieve feed</button>
-    <div id="feed"></div>
-
-    <form class="form-horizontal">
-        <input type="text" ng-model="formAddFeedText" ng-model-instant>
-        <button class="btn" ng-click=addNewFeed()><i class="icon-plus"></i>Add</button>
-    </form>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12 options">
+                <ul class="nav nav-pills options-items">
+                   <li><span add-feed-modal></span></li>
+                   <li><span><a href="#">Mark all as read </a></span></li>
+                </ul> 
+            </div>
+        <div class="row-fluid">
+            <div class="span2 sidebar"></div>
+            <div class="span10 content"></div>
+        </div>
+   </div>
 </div>
-</body>
 {% endblock %}
