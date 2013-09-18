@@ -10,9 +10,10 @@ class Feed(models.Model):
     url = models.URLField(max_length=500)
     date_added = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=300)
+    email_user = models.EmailField(null=True)
 
     def __unicode__(self):
-        return self.title + ',' + str(self.url)
+        return self.title + ', ' + str(self.url) + ', ' + str(self.email_user)
 
 
 class ReaderUserManager(BaseUserManager):
