@@ -5,18 +5,21 @@ angular.module('angSimpleReader.directives', [])
     return {
       restrict: 'A',
       replace: true,
-      scope: {},
       template: '<div>'+
                   '<a href="#" ng-click="toggle()">Add new feed</a>'+
                   '<div ng-show="opened">' +
                   '<form>'+
                   '<fieldset>'+
-                  '<input type="text" placeholder="URL of your feed…"><br />'+
-                  '<button type="submit" class="btn disabled">Submit</button>'+
+                  '<input type="text" placeholder="URL of your feed…" ng-model="newFeedUrl"><br />'+
+                  '<button type="submit" class="btn" ng-click="addNewFeed()">Submit</button>'+
                   '</fieldset>'+
                   '</form>' +
                   '</div>' +
                 '</div>',
+      scope: {
+        addNewFeed: "&",
+        newFeedUrl: "="
+      },
       link: function(scope, elm, attr){
         scope.opened = false;
         
