@@ -26,20 +26,20 @@ class ReaderUserResource(ModelResource):
         resource_name = 'user'
         filtering = {
             'email': ['exact'],
-            'pw': ['exact'],
-            'first_name': ['exact']
+            'first_name': ['exact'],
+            'last_name': ['exact'],
         }
-
-    def hydrate_pw(self, bundle):
-        #bundle.data['pw'] = hashlib.sha1(bundle.data['pw']).hexdigest()
-        print 'test'
-	return bundle.data['pw']
 
 
 class FeedResource(ModelResource):
     class Meta:
         queryset = Feed.objects.all()
         resource_name = 'feed'
+        filtering = {
+            'email_user': ['exact'],
+            'category': ['exact'],
+            'url': ['exact']
+        }
 
 
 class CreateFeedResource(ModelResource):
