@@ -3,6 +3,8 @@
 angular.module('angSimpleReader', ['angSimpleReader.directives'])
     .controller('FeedController', function($scope, $http) {
     	$scope.newFeedUrl;
+        $scope.newFeedName;
+        $scope.newFeedCategory;
         $scope.addFieldModalShown = false;
         
         $scope.addNewFeed = function() {
