@@ -10,9 +10,9 @@ angular.module('angSimpleReader.directives', [])
                   '<div ng-show="opened">' +
                   '<form>'+
                   '<fieldset>'+
-                  '<input type="text" placeholder="Name of your feed.." ng-model="newFeedName"><br />'+
-                  '<input type="text" placeholder="URL of your feed…" ng-model="newFeedUrl"><br />'+
-                  '<input type="text" placeholder="Category.." ng-model="newFeedCategory"><br />'+
+                  '<input type="text" placeholder="Name of your feed.." ng-model= "newFeedTitle" ><br />'+
+                  '<input type="text" placeholder="URL of your feed…" ng-model= "newFeedUrl" ><br />'+
+                  '<input type="text" placeholder="Category.." ng-model= "newFeedCategory" ><br />'+
                   '<button type="submit" class="btn" ng-click="addNewFeed()">Submit</button>'+
                   '</fieldset>'+
                   '</form>' +
@@ -20,7 +20,9 @@ angular.module('angSimpleReader.directives', [])
                 '</div>',
       scope: {
         addNewFeed: "&",
-        newFeedUrl: "="
+        newFeedUrl: "=",
+        newFeedCategory: "=",
+        newFeedTitle: "="
       },
       link: function(scope, elm, attr){
         scope.opened = false;

@@ -3,20 +3,22 @@
 angular.module('angSimpleReader', ['angSimpleReader.directives'])
     .controller('FeedController', function($scope, $http) {
     	$scope.newFeedUrl;
-        $scope.newFeedName;
+        $scope.newFeedTitle;
         $scope.newFeedCategory;
         $scope.addFieldModalShown = false;
         
         $scope.addNewFeed = function() {
-            console.log($scope.newFeedUrl);
-
-            $http.post("/api/addfeed/", 
-                {"email_user" : "jeremy.dagorn@gmail.com", "url" : "www.jeremydagorn.com",
-                "category" : "test", "title" : "Testify"})
-            .success(function(data, status, headers, config) {
-                $scope.data = data;
-            }).error(function(data, status, headers, config) {
-                $scope.status = status;
-            });
+            $http.get("/api/me/?format=json").then(function(response) {
+                $scope.userEmail = response.data.objects[0].email;
+                
+                $http.post("/api/addfeed/", 
+                { "email_user" : $scope.userEmail, "url" : $scope.newFeedUrl,
+                "category" : $scope.newFeedCategory, "title" : $scope.newFeedTitle })
+                    .success(function(data, status, headers, config) {
+                        $scope.data = data;
+                    }).error(function(data, status, headers, config) {
+                        $scope.status = status;
+                    });
+                });
         };
     })
