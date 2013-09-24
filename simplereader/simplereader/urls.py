@@ -5,12 +5,14 @@ from django.contrib import admin
 admin.autodiscover()
 from simplereader.api import (
     ReaderUserResource, FeedResource, 
-    CreateReaderUserResource, CreateFeedResource)
+    CreateReaderUserResource, CreateFeedResource,
+    MyUserResource)
 
 user_resource = ReaderUserResource()
 create_user_resource = CreateReaderUserResource()
 feed_resource = FeedResource()
 create_feed_resource = CreateFeedResource()
+myuser_resource = MyUserResource()
 
 urlpatterns = patterns('',
     # Examples:
@@ -23,6 +25,7 @@ urlpatterns = patterns('',
      url(r'^api/', include(create_user_resource.urls)),
      url(r'^api/', include(feed_resource.urls)),
      url(r'^api/', include(create_feed_resource.urls)),
+     url(r'^api/', include(myuser_resource.urls)),
     # url(r'^simplereader/', include('simplereader.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
